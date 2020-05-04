@@ -3,7 +3,7 @@ package linear
 import (
 	"fmt"
 
-	"github.com/DzananGanic/numericalgo/interpolate"
+	"github.com/askanium/numericalgo/interpolate"
 )
 
 // Linear provides the basic functionality for linear interpolation.
@@ -47,10 +47,10 @@ func (li *Linear) Validate(val float64) error {
 
 func (li *Linear) findNearestNeighbors(val float64, l, r int) (int, int) {
 	middle := (l + r) / 2
-	if (val >= li.XYPairs[middle-1].X) && (val <= li.XYPairs[middle].X) {
-		return middle - 1, middle
-	} else if val < li.XYPairs[middle-1].X {
-		return li.findNearestNeighbors(val, l, middle-2)
+	if (val >= li.XYPairs[middle].X) && (val <= li.XYPairs[middle+1].X) {
+		return middle, middle + 1
+	} else if val < li.XYPairs[middle].X {
+		return li.findNearestNeighbors(val, l, middle)
 	}
 	return li.findNearestNeighbors(val, middle+1, r)
 }

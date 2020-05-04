@@ -3,7 +3,7 @@ package interpolate
 import (
 	"fmt"
 
-	"github.com/DzananGanic/numericalgo"
+	"github.com/askanium/numericalgo"
 )
 
 // Base type provides the base functionality for any interpolation type
